@@ -4,8 +4,8 @@ const Server = express()
 const { v4: uuidv4 } = require('uuid');
 require('dotenv').config()
 
-const appId = process.env.APPID
-const appCertificate = process.env.Certificate
+const appId = "109b06fa41734096ad07b78fdc7c195f"
+const appCertificate = "3e12a2f97fbd411997dd6d29db6d9c14" 
 
 
 const nocache = (_, resp, next) => {
@@ -39,7 +39,6 @@ const generateToken = (req,res) =>{
     const currentTime = Math.floor(Date.now()/1000)
     const privelageExpireTime = currentTime + expiryTime
     const token = RtcTokenBuilder.buildTokenWithUid(appId , appCertificate , channelName , uid , role , privelageExpireTime)
-    
     return res.json({'token' : token})
 }
 
